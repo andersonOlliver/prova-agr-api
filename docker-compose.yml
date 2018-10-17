@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  cn.taverna.api:
+    image: ${DOCKER_REGISTRY}cntavernaapi
+    build:
+      context: .
+      dockerfile: src/CN.Taverna.API/Dockerfile

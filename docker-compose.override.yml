@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+
+  cn.taverna.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+    networks:
+      - taverna-network
+    depends_on:
+      - "basetaverna"
+
+  basetaverna:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - taverna-network
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+
+networks: 
+  taverna-network:
+    driver: bridge
